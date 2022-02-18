@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<textarea style="font-size: 30px;text-align:center " name="txtarea" id="txtarea" cols="20" rows="10" placeholder="xả giận vào đây đi" onkeyup="fakeTextarea()"></textarea>
+
+</body>
+<script>
+    let fakeText = 'Just a bad day, rest and tomorrow will bring a gift';
+    let str = '';
+
+    let arr = fakeText.split('');
+    console.log(arr);
+
+    function fakeTextarea() {
+        let txtarea = document.getElementById('txtarea').value;
+        let txtareaLength = txtarea.length
+        let arrLength = arr.length;
+
+        if (txtareaLength > 0) {
+            for (let i = 0; i < txtareaLength; i++) {
+                console.log('i ===', i)
+                str += arr[i];
+                console.log('arr[i] =', arr[i]);
+                console.log('str ====', str);
+                //thay thế kí tự nhập vào bằng ký tự tương ứng tại thời điểm i
+                if (i == arrLength) {
+                    str = '';
+                    document.getElementById('txtarea').value = '';
+                }
+                //    điều kiện nếu người dùng nhập nhiều hơn độ dài của faketext thì trả về khoảng trắng ban đầu tại thời điểm i==arr.lenght
+            }
+            document.getElementById('txtarea').value = str;
+            str = '';
+
+        }
+    }
+</script>
+</html>
